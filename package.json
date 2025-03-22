@@ -8,6 +8,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "gulp bundle",
+    "package": "gulp package-solution",
     "clean": "gulp clean",
     "test": "gulp test",
     "serve": "fast-serve"
