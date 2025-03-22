@@ -6,6 +6,10 @@
 
 A modern, keyboard-accessible search experience for SharePoint. This extension provides a clean, minimal search interface with powerful filtering capabilities.
 
+## Download
+
+Download the [latest release](https://github.com/heesungjang/sharepoint-power-search/releases/tag/1.0.0)
+
 ## Features
 
 - **Keyboard-first approach**: Open search with `Ctrl+K` or `Cmd+K` (Mac)
