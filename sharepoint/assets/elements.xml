@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="PowerSearch"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="cad70ae3-60ce-44f8-a401-7c06e1676894"
+        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </CustomAction>
+</Elements>

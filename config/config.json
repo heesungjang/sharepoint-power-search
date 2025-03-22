@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "power-search-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/powerSearch/PowerSearchApplicationCustomizer.js",
+          "manifest": "./src/extensions/powerSearch/PowerSearchApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PowerSearchApplicationCustomizerStrings": "lib/extensions/powerSearch/loc/{locale}.js"
+  }
+}
