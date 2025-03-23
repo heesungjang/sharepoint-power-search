@@ -1,6 +1,6 @@
 # Power Search for SharePoint
 
-<img width="1228" alt="power-search-screenshot" src="https://github.com/user-attachments/assets/1375c7ec-1c3c-4d1b-bec1-ee3da1eb60bd" />
+<img width="1727" alt="power-search-screenshot" src="https://github.com/user-attachments/assets/c589ad26-afe3-43e4-ae60-e05716b28d37" />
 
 ![SharePoint Framework](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
 ![FluentUI](https://img.shields.io/badge/FluentUI-9.56.1-blue.svg)
