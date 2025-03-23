@@ -28,32 +28,27 @@ export interface IPowerSearchApplicationCustomizerProperties {
 export default class PowerSearchApplicationCustomizer extends BaseApplicationCustomizer<IPowerSearchApplicationCustomizerProperties> {
   private sp: SPFI;
   private graph: GraphFI;
-  private appBarPlaceholder: HTMLElement | undefined;
-  private bottomPlaceholder: PlaceholderContent | undefined;
+  private topPlaceholder: PlaceholderContent | undefined;
 
   public onInit(): Promise<void> {
     this.sp = getSP(this.context);
     this.graph = getGraph(this.context);
 
-    if (!window.isNavigatedEventSubscribed) {
-      this.context.application.navigatedEvent.add(this, this.renderPowerSearch);
-      window.isNavigatedEventSubscribed = true;
-    }
+    this.renderPowerSearch();
 
     return Promise.resolve();
   }
 
   private renderPowerSearch = () => {
-    if (!this.bottomPlaceholder) {
-      this.bottomPlaceholder =
-        this.context.placeholderProvider.tryCreateContent(
-          PlaceholderName.Bottom,
-          {
-            onDispose: this.onDispose,
-          }
-        );
+    if (!this.topPlaceholder) {
+      this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
+        PlaceholderName.Bottom,
+        {
+          onDispose: this.onDispose,
+        }
+      );
 
-      if (!this.bottomPlaceholder) {
+      if (!this.topPlaceholder) {
         console.error(
           `Entry button cannot be displayed as 
             the bottom placeholder cannot be found.`
@@ -61,7 +56,7 @@ export default class PowerSearchApplicationCustomizer extends BaseApplicationCus
         return;
       }
 
-      if (this.bottomPlaceholder.domElement) {
+      if (this.topPlaceholder.domElement) {
         ReactDOM.render(
           <IdPrefixProvider value="PowerSearch">
             <QueryClientProvider client={queryClient}>
@@ -75,9 +70,15 @@ export default class PowerSearchApplicationCustomizer extends BaseApplicationCus
               </FluentProvider>
             </QueryClientProvider>
           </IdPrefixProvider>,
-          this.bottomPlaceholder.domElement
+          this.topPlaceholder.domElement
         );
       }
     }
   };
+  public onDispose() {
+    window.isNavigatedEventSubscribed = false;
+    window.currentWeb = '';
+
+    return Promise.resolve();
+  }
 }
