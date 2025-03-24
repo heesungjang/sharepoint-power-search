@@ -300,7 +300,7 @@ const PowerSearch: React.FC = () => {
 
   const addToSearchHistory = useCallback(
     (query: string) => {
-      if (!query.trim()) return;
+      if (!query.trim() || query.trim().length < 3) return;
 
       setPreferences((prev) => {
         const filtered = prev.recentSearches.filter(
@@ -398,10 +398,10 @@ const PowerSearch: React.FC = () => {
   );
 
   useEffect(() => {
-    if (debouncedSearchQuery.trim()) {
+    if (debouncedSearchQuery.trim() && searchResults.length > 0) {
       addToSearchHistory(debouncedSearchQuery);
     }
-  }, [debouncedSearchQuery, addToSearchHistory]);
+  }, [searchResults, debouncedSearchQuery, addToSearchHistory]);
 
   useEffect(() => {
     if (uiState.isViewTransitioning && !isFetching) {
@@ -658,9 +658,11 @@ const PowerSearch: React.FC = () => {
                                 icon={<HistoryRegular />}
                                 hasSecondaryAction
                                 onClick={() => {
-                                  handleSearchChange({
-                                    target: { value: query },
-                                  } as any);
+                                  setSearchQuery(query);
+                                  if (searchInputRef.current) {
+                                    searchInputRef.current.value = query;
+                                    searchInputRef.current.focus();
+                                  }
                                 }}
                               >
                                 {query}
